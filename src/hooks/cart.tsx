@@ -79,23 +79,20 @@ const CartProvider: React.FC = ({ children }) => {
     [products],
   );
 
-  const increment = useCallback(
-    async id => {
-      setProducts(state =>
-        state.map(p => {
-          if (p.id === id) {
-            return { ...p, quantity: p.quantity + 1 };
-          }
-          return p;
-        }),
-      );
-      // await AsyncStorage.setItem(
-      //   '@GoMarketplace:products',
-      //   JSON.stringify(products),
-      // );
-    },
-    [products],
-  );
+  const increment = useCallback(async id => {
+    setProducts(state =>
+      state.map(p => {
+        if (p.id === id) {
+          return { ...p, quantity: p.quantity + 1 };
+        }
+        return p;
+      }),
+    );
+    // await AsyncStorage.setItem(
+    //   '@GoMarketplace:products',
+    //   JSON.stringify(products),
+    // );
+  }, []);
 
   const decrement = useCallback(
     async id => {
